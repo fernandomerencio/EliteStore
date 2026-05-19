@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atividade JavaScript</title>
+
+    <style>
+
+        body{
+            font-family: Arial, Helvetica, sans-serif;
+            background: linear-gradient(to right, #1e3c72, #2a5298);
+            margin: 0;
+            padding: 0;
+        }
+
+        .container{
+            width: 500px;
+            margin: 50px auto;
+            background-color: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0px 0px 15px rgba(0,0,0,0.3);
+            text-align: center;
+        }
+
+        h1{
+            color: #1e3c72;
+            margin-bottom: 30px;
+        }
+
+        button{
+            width: 100%;
+            padding: 15px;
+            margin: 10px 0;
+            border: none;
+            border-radius: 10px;
+            background-color: #2a5298;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        button:hover{
+            background-color: #1e3c72;
+            transform: scale(1.02);
+        }
+
+        p{
+            color: gray;
+            margin-top: 20px;
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>Atividade de JavaScript</h1>
+
+        <button onclick="executarMaiorMenor()">
+            1 - MAIOR E MENOR
+        </button>
+
+        <button onclick="executarVogal()">
+            2 - VERIFICAR VOGAL
+        </button>
+
+        <button onclick="executarLimites()">
+            3 - LIMITES
+        </button>
+
+        <button onclick="executarOrdem()">
+            4 - ORDEM CRESCENTE
+        </button>
+
+        <button onclick="executarPositivoNegativo()">
+            5 - POSITIVO OU NEGATIVO
+        </button>
+
+        <button onclick="executarParImpar()">
+            6 - PAR OU ÍMPAR
+        </button>
+
+        <p></p>
+
+    </div>
+
+    <script>
+
+        // 1) MAIOR_MENOR
+        function MAIOR_MENOR(a, b, c, d, e){
+
+            let numeros = [a, b, c, d, e];
+
+            let maior = Math.max(...numeros);
+            let menor = Math.min(...numeros);
+
+            alert("Maior valor: " + maior + "\nMenor valor: " + menor);
+        }
+
+        function executarMaiorMenor(){
+
+            let a = parseInt(prompt("Digite o primeiro número:"));
+            let b = parseInt(prompt("Digite o segundo número:"));
+            let c = parseInt(prompt("Digite o terceiro número:"));
+            let d = parseInt(prompt("Digite o quarto número:"));
+            let e = parseInt(prompt("Digite o quinto número:"));
+
+            MAIOR_MENOR(a, b, c, d, e);
+        }
+
+
+        // 2) VOGAL
+        function VOGAL(c){
+
+            c = c.toLowerCase();
+
+            if(c == 'a' || c == 'e' || c == 'i' || c == 'o' || c == 'u'){
+                return 1;
+            }else{
+                return 0;
+            }
+        }
+
+        function executarVogal(){
+
+            let letra = prompt("Digite uma letra:");
+
+            let resultado = VOGAL(letra);
+
+            alert("Resultado: " + resultado);
+        }
+
+
+        // 3) LIMITES
+        function LIMITES(li, ls){
+
+            let soma = 0;
+            let pares = "";
+
+            for(let i = li + 1; i < ls; i++){
+
+                if(i % 2 == 0){
+
+                    pares += i + " ";
+                    soma += i;
+                }
+            }
+
+            alert("Números pares: " + pares + "\nSomatório: " + soma);
+        }
+
+        function executarLimites(){
+
+            let li = parseInt(prompt("Digite o limite inferior:"));
+            let ls = parseInt(prompt("Digite o limite superior:"));
+
+            LIMITES(li, ls);
+        }
+
+
+        // 4) ORDEM
+        function ORDEM(a, b, c){
+
+            let numeros = [a, b, c];
+
+            numeros.sort(function(x, y){
+                return x - y;
+            });
+
+            return numeros;
+        }
+
+        function executarOrdem(){
+
+            let a = parseInt(prompt("Digite o primeiro número:"));
+            let b = parseInt(prompt("Digite o segundo número:"));
+            let c = parseInt(prompt("Digite o terceiro número:"));
+
+            let resultado = ORDEM(a, b, c);
+
+            alert("Ordem crescente: " + resultado.join(", "));
+        }
+
+
+        // 5) POSITIVO_NEGATIVO
+        function POSITIVO_NEGATIVO(x){
+
+            if(x >= 0){
+                return "Esse numero é positivo";
+            }else{
+                return "Esse numero é negativo";
+            }
+        }
+
+        function executarPositivoNegativo(){
+
+            let x = parseInt(prompt("Digite um número:"));
+
+            let resultado = POSITIVO_NEGATIVO(x);
+
+            alert(resultado);
+        }
+
+
+        // 6) PAR_IMPAR
+        function PAR_IMPAR(x){
+
+            if(x % 2 == 0){
+                return "Esse numero é par";
+            }else{
+                return "Esse numero é impar";
+            }
+        }
+
+        function executarParImpar(){
+
+            let x = parseInt(prompt("Digite um número:"));
+
+            let resultado = PAR_IMPAR(x);
+
+            alert(resultado);
+        }
+
+    </script>
+
+</body>
+</html>
