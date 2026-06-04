@@ -168,30 +168,59 @@
     </div>
 
     <script>
-        function entrar() {
+        window.onload = function () {
 
-            let nome = document.getElementById("nome").value;
-            let erro = document.getElementById("erro");
+    let nomeSalvo = localStorage.getItem("nomeUsuario");
 
-            if (nome.trim() === "") {
-                erro.innerHTML = "Digite seu nome para continuar.";
-                return;
-            }
+    if (nomeSalvo) {
 
-            if (nome.length < 3) {
-                erro.innerHTML = "O nome deve possuir pelo menos 3 caracteres.";
-                return;
-            }
+        document.getElementById("overlay").style.display = "none";
 
-            document.getElementById("overlay").style.display = "none";
+        document.getElementById("boasVindas").innerHTML =
+            "👋 Bem-vindo(a), <strong>" +
+            nomeSalvo +
+            "</strong>! Aproveite as melhores ofertas da Elite Store.";
 
-            document.getElementById("boasVindas").innerHTML =
-                "👋 Bem-vindo(a), <strong>" +
-                nome +
-                "</strong>! Aproveite as melhores ofertas da Elite Store.";
+        document.getElementById("boasVindas").style.display = "block";
 
-            document.getElementById("boasVindas").style.display = "block";
-        }
+        document.getElementById("sairBtn").style.display = "inline-block";
+    }
+}
+
+function entrar() {
+
+    let nome = document.getElementById("nome").value;
+    let erro = document.getElementById("erro");
+
+    if (nome.trim() === "") {
+        erro.innerHTML = "Digite seu nome para continuar.";
+        return;
+    }
+
+    if (nome.length < 3) {
+        erro.innerHTML = "O nome deve possuir pelo menos 3 caracteres.";
+        return;
+    }
+
+    localStorage.setItem("nomeUsuario", nome);
+
+    document.getElementById("overlay").style.display = "none";
+
+    document.getElementById("boasVindas").innerHTML =
+        "👋 Bem-vindo(a), <strong>" +
+        nome +
+        "</strong>! Aproveite as melhores ofertas da Elite Store.";
+
+    document.getElementById("boasVindas").style.display = "block";
+
+    document.getElementById("sairBtn").style.display = "inline-block";
+}
+
+function sair() {
+    localStorage.removeItem("nomeUsuario");
+    location.reload();
+}
+
     </script>
 
 </body>
